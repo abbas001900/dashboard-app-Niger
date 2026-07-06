@@ -26,9 +26,9 @@
   box-shadow:0.25rem .25rem .15rem rgba(0,0,0,.15);
   box-sizing:border-box;
   left:50%;
-  position:fixed;
-  top:50%;
-  transform:translate(-50%, -50%);
+  /* position:fixed; */
+  /* top:50%; */
+  /* transform:translate(-50%, -50%); */
 }
 
 h1 {
