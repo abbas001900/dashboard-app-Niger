@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+.no-scrollbar::-webkit-scrollbar {
+    display: none; /* Safari et Chrome */
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none; /* Internet Explorer et Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
 .bg-background-app {
   animation:slide 3s ease-in-out infinite alternate;
   background-image: linear-gradient(-60deg, #414141 50%, #626262 50%);
