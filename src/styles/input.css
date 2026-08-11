@@ -20,3 +20,267 @@
     @apply rounded-xl border border-white/10 bg-white/10 backdrop-blur-xl shadow-xl;
   }
 }
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.bg {
+  animation: slide 15s ease-in-out infinite alternate;
+  background-image: linear-gradient(-60deg, rgb(54, 54, 54)50%, rgb(79, 79, 79)50%);
+  bottom: 0;
+  left: -50%;
+  opacity: 0.5;
+  position: fixed;
+  right: -50%;
+  top: 0;
+  z-index: -1;
+}
+
+.bg2 {
+  animation-direction: alternate-reverse;
+  animation-duration: 13s;
+}
+
+.bg3 {
+  animation-duration: 11s;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(25%);
+  }
+}
+
+/* =============================================
+   CLASSES UTILITAIRES POUR LE DASHBOARD
+   ============================================= */
+
+/* --- Barre latérale --- */
+/* Remplace l'empilement de classes sur le <aside> */
+.sidebar {
+  @apply fixed left-0 top-0 z-50 hidden h-full w-72 max-w-[85vw] flex-col justify-start gap-2
+         rounded-r-lg border-2 border-white/20 bg-black/40 px-2 py-3 backdrop-blur-sm
+         peer-checked:flex
+         sm:static sm:flex sm:h-full sm:w-64 sm:flex-col sm:justify-start sm:gap-4
+         sm:overflow-y-auto sm:bg-white/10 sm:backdrop-blur-none lg:w-64 shrink-0;
+}
+
+/* --- Liens du menu latéral --- */
+/* Style commun à tous les liens */
+.sidebar-link {
+  @apply flex items-center rounded px-2 py-2 text-sm text-white
+         sm:text-base lg:text-xl xl:text-2xl;
+}
+
+/* Variante active (page courante) */
+.sidebar-link-active {
+  @apply bg-brand;
+}
+
+/* --- Icônes --- */
+/* Taille responsive pour toutes les icônes */
+.icon-size {
+  @apply h-6 w-6 2xl:h-8 2xl:w-8;
+}
+
+/* --- Cartes statistiques (utilisateurs, tâches) --- */
+.card-stat {
+  @apply flex h-fit flex-col items-center rounded-lg border-2 border-white/20
+         bg-white/10 px-5 py-4;
+}
+
+/* --- Blocs notifications --- */
+.notification-box {
+  @apply flex flex-col justify-center rounded-lg border-2 border-white/20
+         bg-white/10 p-3 text-white;
+}
+
+/* --- Graphiques donut --- */
+.donut-chart {
+  @apply max-h-24 w-full max-w-[180px] md:max-w-[220px] xl:max-w-[320px] h-auto;
+}
+
+/* --- Légende des graphiques --- */
+.legend-color {
+  @apply flex w-[2.2em] h-[0.8em];
+}
+
+/* --- Champs de filtre (select) --- */
+.filter-select {
+  @apply w-full rounded-lg border-2 border-white/40 bg-white/10 px-2 py-1 text-white placeholder:text-gray-200 sm:w-full;
+}
+
+/* --- Champ de recherche --- */
+.search-input {
+  @apply w-full rounded-lg border-2 border-white/40 bg-white/10 px-2 py-1 text-white placeholder:text-gray-200 sm:w-55;
+}
+
+/* --- Boutons d'action --- */
+.btn-primary {
+  @apply flex items-center text-white rounded-lg px-2 py-1 bg-brand;
+}
+
+.btn-secondary {
+  @apply flex items-center text-white bg-white/20 rounded-lg px-2 py-1;
+}
+
+/* --- Éléments du tableau --- */
+.table-row {
+  @apply rounded-lg bg-white/20;
+}
+
+.table-checkbox {
+  @apply h-5 w-5 cursor-pointer border border-white/40 bg-white/10;
+}
+
+.status-badge {
+  @apply rounded-full bg-white/10 px-3 py-1 text-sm;
+}
+
+.user-avatar {
+  @apply flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500;
+}
+
+/* --- Onglets de messagerie --- */
+.tab-label {
+  @apply flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] 
+         px-3 lg:px-4 text-sm lg:text-base;
+}
+
+.tab-active {
+  @apply border border-white/20 
+         bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)];
+}
+
+/* --- Panneau déroulant des onglets --- */
+.tab-panel {
+  @apply absolute left-0 top-full mt-2 lg:mt-4 w-full px-1 lg:px-3 
+         shadow-[0_20px_40px_rgba(0,0,0,0.6)] pb-6 z-20;
+}
+
+/* --- Ligne d'un message (dans la liste) --- */
+.message-row {
+  @apply flex flex-col lg:flex-row rounded-lg bg-white/20 px-3 lg:px-4 py-4 lg:py-6 
+         gap-3 lg:gap-4 text-white hover:bg-white/30 transition-colors cursor-pointer;
+}
+
+/* --- Sélecteur de mode (Kanban/Liste/Calendrier) --- */
+.mode-switcher {
+  @apply flex justify-between relative rounded-lg mx-3 px-2 py-1 text-white 
+         shadow-[0_3px_10px_rgba(0,0,0,0.4)] bg-white/20 
+         bg-[linear-gradient(to_bottom,white_0.01%,white_0.01%,transparent_1%,transparent_2%)];
+}
+
+.mode-label {
+  @apply cursor-pointer;
+}
+
+.mode-button {
+  @apply flex items-center rounded-lg gap-2 py-[0.9em] px-4;
+}
+
+.mode-active {
+  @apply border border-white/20 
+         bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)];
+}
+
+.mode-panel {
+  @apply absolute mt-4 rounded-lg left-0 right-0 w-full;
+}
+
+/* --- Tableau Kanban --- */
+.kanban-board {
+  @apply flex justify-center gap-5 w-full;
+}
+
+.kanban-column {
+  @apply flex flex-col w-full md:w-[33%] bg-white/20 gap-3 rounded-lg pt-2 px-2;
+}
+
+/* --- Carte de tâche (Kanban) --- */
+.task-card {
+  @apply flex flex-col rounded-lg p-2 gap-3 bg-white/20 shadow-[0_10px_10px_rgba(0,0,0,0.2)];
+}
+
+/* --- Groupe d'avatars --- */
+.avatar-group {
+  @apply flex items-center gap-1;
+}
+
+.avatar-circle {
+  @apply flex items-center justify-center w-12 h-12 bg-white rounded-full 
+         text-orange-500 font-bold text-3xl;
+  margin-left: -0.75rem; /* superposition élégante */
+}
+
+.avatar-circle:first-child {
+  margin-left: 0;
+}
+
+/* --- Boutons génériques --- */
+.btn {
+  @apply text-white rounded px-2 py-1;
+}
+
+.btn-brand {
+  @apply bg-brand;
+}
+
+.btn-gray {
+  @apply bg-gray-500;
+}
+
+/* --- Champs de formulaire --- */
+.form-group {
+  @apply flex flex-col gap-1;
+}
+
+.form-label {
+  @apply font-medium text-white;
+}
+
+.form-input {
+  @apply border-2 border-gray-300 placeholder:text-white/30 rounded-lg py-1.5 
+         focus:outline-none focus:ring-2 focus:ring-green-500 bg-transparent text-white;
+}
+
+/* --- Section profil (carte avec ombre interne) --- */
+.profile-section {
+  @apply flex flex-col p-2 rounded-lg shadow-[inset_0_0_5px_rgba(255,255,255,0.5)] gap-3;
+}
+
+/* --- Boîte d'avertissement (suppression de compte) --- */
+.warning-box {
+  @apply flex flex-col rounded-lg text-[#FF6C33]/70 outline outline-[0.5px] p-2 
+         outline-red-500/70 border-2 border-[#FF6C33]/70 bg-brand/15;
+}
+
+/* --- Variante de bouton large (pour la page login) --- */
+.btn-lg {
+  @apply py-2 px-3 text-lg;
+}
+
+/* --- Champ de formulaire pour la page login --- */
+.login-input {
+  @apply border border-white rounded-lg px-3 py-2 w-full bg-transparent text-white 
+         focus:outline-none focus:ring-2 focus:ring-brand/50;
+}
+
+/* --- Bouton social --- */
+.social-btn {
+  @apply cursor-pointer hover:bg-brand/80 flex justify-center items-center 
+         py-2 px-3 rounded bg-brand transition-colors;
+}
+
+/* --- Taille d'icône sociale --- */
+.social-icon-size {
+  @apply w-4 h-4 xl:w-6 xl:h-6 2xl:w-12 2xl:h-12;
+}

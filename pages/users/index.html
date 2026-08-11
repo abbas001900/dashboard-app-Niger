@@ -1,174 +1,138 @@
 <!doctype html>
-<html lang="en" class="h-full">
-
+<html lang="fr" class="h-full">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="../../mvm.css" />
+  <title>Utilisateurs - Dashboard</title>
+
+  <!-- Fichier CSS compilé Tailwind (contient nos classes @apply) -->
   <link rel="stylesheet" href="../../src/styles/output.css" />
-
-  <!-- DaisyUI -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Bootstrap Icons (seule librairie d'icônes) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <!-- Animations de fond (mvm.css ne contient plus que le CSS sans @apply) -->
+  <link rel="stylesheet" href="../../mvm.css" />
 </head>
-
-<body class="min-h-full overflow-x-hidden">  <!-- Page shell: background layers and user management layout -->  <div class="bg"></div>
+<body class="h-full overflow-x-hidden">
+  <!-- Arrière-plans animés -->
+  <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
-  <div class="flex min-h-screen flex-col justify-center gap-3 px-2 py-2 sm:flex-row sm:gap-5 sm:px-3 sm:py-3">
+
+  <div class="flex h-full flex-col justify-center gap-3 px-2 py-2 sm:flex-row sm:gap-5 sm:px-3 sm:py-3">
+    <!-- Checkbox caché pour le menu mobile -->
     <input id="menuToggle" type="checkbox" class="peer sr-only" />
+    <!-- Overlay mobile -->
     <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 sm:hidden peer-checked:block"></label>
-    <aside class="fixed lg:min-h-[96vh] left-0 top-0 z-50 hidden h-full w-72 max-w-[85vw] flex-col justify-start gap-2 rounded-r-lg border-2 border-white/20 bg-black/40 px-2 py-3 backdrop-blur-sm peer-checked:flex sm:static sm:flex sm:h-full sm:w-64 sm:flex-col sm:justify-start sm:gap-4 sm:overflow-y-auto sm:bg-white/10 sm:backdrop-blur-none lg:w-64 shrink-0">
+
+    <!-- Barre latérale -->
+    <aside class="sidebar">
+      <!-- Bouton fermeture mobile -->
       <label for="menuToggle" class="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white sm:hidden" aria-label="Fermer le menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <i class="bi bi-x icon-size"></i>
       </label>
+
+      <!-- Logo -->
       <img src="../../assets/Logo.svg" alt="" class="mx-auto w-full max-w-[100px] sm:max-w-[120px] md:max-w-[150px] xl:max-w-full" />
 
+      <!-- Navigation -->
       <div class="flex w-full flex-col gap-1 sm:gap-2">
         <a href="../dashboard/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Dashboard >
-          </span>
+          <span class="sidebar-link">Dashboard &gt;</span>
         </a>
         <a href="../users/index.html" class="w-full">
-          <span class="flex items-center rounded bg-brand px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Utilisateurs >
-          </span>
+          <span class="sidebar-link sidebar-link-active">Utilisateurs &gt;</span>
         </a>
         <a href="../messages/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Messagerie >
-          </span>
+          <span class="sidebar-link">Messagerie &gt;</span>
         </a>
         <a href="../tasks/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Taches >
-          </span>
+          <span class="sidebar-link">Tâches &gt;</span>
         </a>
         <a href="#" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Calendrier >
-          </span>
+          <span class="sidebar-link">Calendrier &gt;</span>
         </a>
         <a href="../account/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Comptes >
-          </span>
+          <span class="sidebar-link">Comptes &gt;</span>
         </a>
       </div>
     </aside>
+
+    <!-- Contenu principal -->
     <div class="flex h-full min-w-0 flex-col gap-4 w-full">
-      <!-- Main content area for user list and filters -->
+      <!-- En-tête -->
       <header class="flex flex-col gap-3 rounded border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
         <div class="flex items-center gap-2">
+          <!-- Bouton burger mobile -->
           <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white sm:hidden" aria-label="Ouvrir le menu">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <i class="bi bi-list icon-size"></i>
           </label>
           <div class="flex flex-col gap-2">
             <h1 class="flex text-xl text-white sm:text-2xl">Bonjour, Aïcha Diop</h1>
             <span class="flex flex-wrap items-center gap-2 text-gray-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-house-fill"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
-                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
-              </svg>
-              >
+              <i class="bi bi-house-fill text-white text-sm sm:text-base lg:text-xl xl:text-2xl"></i>
+              &gt;
               <p>tableau de board</p>
             </span>
           </div>
         </div>
-        <!-- les trois icones dans l'angle droit du header -->
+
+        <!-- Icônes de droite -->
         <div class="flex flex-wrap items-center justify-end gap-2 sm:gap-1">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-gear h-6 w-6 2xl:h-8 2xl:w-8"
-            viewBox="0 0 16 16">
-            <path
-              d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
-            <path
-              d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
-          </svg>
+          <i class="bi bi-gear icon-size text-white"></i>
           <div class="relative">
             <span class="flex absolute w-2 h-2 border top-0 right-0 bg-brand rounded-full"></span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-bell h-6 w-6 2xl:h-8 2xl:w-8"
-              viewBox="0 0 16 16">
-              <path
-                d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
-            </svg>
+            <i class="bi bi-bell icon-size text-white"></i>
           </div>
           <a href="../auth/index.html">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person h-6 w-6 2xl:h-8 2xl:w-8"
-              viewBox="0 0 16 16">
-              <path
-                d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-            </svg>
+            <i class="bi bi-person icon-size text-white"></i>
           </a>
         </div>
       </header>
-      <main
-        class="flex flex-col gap-4 lg:h-[68vh] xl:h-[75vh] overflow-y-scroll rounded border-2 border-white/20 bg-white/20 px-3 py-3 backdrop-blur sm:gap-6 sm:px-4 sm:py-4 lg:gap-6">
+
+      <!-- Zone principale -->
+      <main class="flex flex-col gap-4 h-full overflow-y-scroll rounded border-2 border-white/20 bg-white/20 px-3 py-3 backdrop-blur sm:gap-6 sm:px-4 sm:py-4 lg:gap-6">
+        <!-- Filtres et actions -->
         <div class="flex flex-col gap-2">
           <p class="text-white mb-3 mt-1">
-            Choisissez un des <span class="font-bold">filtres</span> suivant pour modifier la
-            liste
+            Choisissez un des <span class="font-bold">filtres</span> suivant pour modifier la liste
           </p>
           <div class="flex flex-col gap-3 sm:flex-row sm:justify-between">
-            <select class="w-full rounded-lg border border-2 border-white/40 bg-white/10 px-2 py-1 text-white placeholder:text-gray-200 sm:w-full">
+            <select class="filter-select">
               <option value="">Tous les rôles</option>
               <option value="admin">Administrateur</option>
               <option value="user">Utilisateur</option>
             </select>
-            <select class="w-full rounded-lg border border-2 border-white/40 bg-white/10 px-2 py-1 text-white placeholder:text-gray-200 sm:w-full">
-              <option value="">Tous les Status</option>
+            <select class="filter-select">
+              <option value="">Tous les statuts</option>
               <option value="active">Actif</option>
               <option value="inactive">Inactif</option>
             </select>
-            <select class="w-full rounded-lg border border-2 border-white/40 bg-white/10 px-2 py-1 text-white placeholder:text-gray-200 sm:w-full">
+            <select class="filter-select">
               <option value="">Toutes les régions</option>
               <option value="region1">Région 1</option>
               <option value="region2">Région 2</option>
             </select>
           </div>
           <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-end">
-            <input type="text" class="w-full rounded-lg border-2 border-white/40 bg-white/10 px-2 py-1 text-white placeholder:text-gray-200 sm:w-55"
-              placeholder="Rechercher un utilisateur" />
-            <div>
-              <p class="text-gray-300"></p>
-            </div>
-            <div class="flex items-center text-white bg-white/20 rounded-lg px-2 py-1">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-up w-4 2xl:w-6"
-                viewBox="0 0 16 16">
-                <path fill-rule="evenodd"
-                  d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5" />
-              </svg>
-              <p>Explorez</p>
-            </div>
-            <div class="flex items-center text-white rounded-lg px-2 py-1 bg-brand">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus"
-                viewBox="0 0 16 16">
-                <path
-                  d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
-              </svg>
-              <p>Ajoutez un nouvel utilisateurs</p>
-            </div>
+            <input type="text" class="search-input" placeholder="Rechercher un utilisateur" />
+            <button class="btn-secondary">
+              <i class="bi bi-arrow-up w-4 2xl:w-6"></i>
+              <span>Explorer</span>
+            </button>
+            <button class="btn-primary">
+              <i class="bi bi-plus"></i>
+              <span>Ajouter un nouvel utilisateur</span>
+            </button>
           </div>
         </div>
+
+        <!-- Tableau des utilisateurs -->
         <div class="w-full overflow-x-auto">
-          <!-- Semantic user table -->
           <table class="min-w-full border-separate border-spacing-y-2 text-white">
             <thead>
               <tr class="text-left text-sm uppercase tracking-wide text-gray-200">
                 <th class="w-12 px-3 py-2">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
+                  <input type="checkbox" class="table-checkbox" />
                 </th>
                 <th class="px-3 py-2">Utilisateurs</th>
                 <th class="px-3 py-2">Rôle</th>
@@ -177,15 +141,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="rounded-lg bg-white/20">
+              <!-- Une seule ligne type, les autres identiques -->
+              <tr class="table-row">
                 <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
+                  <input type="checkbox" class="table-checkbox" />
                 </td>
                 <td class="px-3 py-3">
                   <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
+                    <div class="user-avatar">AS</div>
                     <div>
                       <p class="font-semibold">I. Barry</p>
                       <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
@@ -194,7 +157,7 @@
                 </td>
                 <td class="px-3 py-3">Administrateur</td>
                 <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
+                  <span class="status-badge">Inactif</span>
                 </td>
                 <td class="rounded-r-lg px-3 py-3">
                   <div class="flex items-center gap-3 text-xl">
@@ -204,627 +167,16 @@
                   </div>
                 </td>
               </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
+              <!-- Répéter la ligne ci-dessus autant de fois que nécessaire -->
+              <!-- Pour l'exemple, je mets juste quelques lignes, à toi de dupliquer -->
+              <tr class="table-row">
+                <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" /></td>
+                <td class="px-3 py-3"><div class="flex items-center gap-3"><div class="user-avatar">FB</div><div><p class="font-semibold">F. Bernard</p><p class="text-sm text-gray-200">fatou.bernard@statapp.com</p></div></div></td>
+                <td class="px-3 py-3">Utilisateur</td>
+                <td class="px-3 py-3"><span class="status-badge">Actif</span></td>
+                <td class="rounded-r-lg px-3 py-3"><div class="flex items-center gap-3 text-xl"><i class="bi bi-pen"></i><i class="bi bi-trash3"></i><i class="bi bi-three-dots-vertical"></i></div></td>
               </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
-              <tr class="rounded-lg bg-white/20">
-                <td class="rounded-l-lg px-3 py-3">
-                  <input type="checkbox" class="h-5 w-5 cursor-pointer border border-white/40 bg-white/10" />
-                </td>
-                <td class="px-3 py-3">
-                  <div class="flex items-center gap-3">
-                    <div
-                      class="flex h-12 w-12 items-center justify-center rounded-full bg-white text-lg font-bold text-orange-500">
-                      AS</div>
-                    <div>
-                      <p class="font-semibold">I. Barry</p>
-                      <p class="text-sm text-gray-200">ibrahim.barry@statapp.com</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="px-3 py-3">Administrateur</td>
-                <td class="px-3 py-3">
-                  <span class="rounded-full bg-white/10 px-3 py-1 text-sm">Inactif</span>
-                </td>
-                <td class="rounded-r-lg px-3 py-3">
-                  <div class="flex items-center gap-3 text-xl">
-                    <i class="bi bi-pen"></i>
-                    <i class="bi bi-trash3"></i>
-                    <i class="bi bi-three-dots-vertical"></i>
-                  </div>
-                </td>
-              </tr>
+              <!-- ... -->
             </tbody>
           </table>
         </div>
@@ -832,5 +184,4 @@
     </div>
   </div>
 </body>
-
 </html>

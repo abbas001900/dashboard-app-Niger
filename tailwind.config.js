@@ -3,10 +3,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          DEFAULT: "#FF6C33",
-          dark: "#1f2937"
-        }
+        brand: '#FF6C33',
       }
     }
   },

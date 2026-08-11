@@ -1,248 +1,175 @@
 <!doctype html>
-<html lang="en" class="h-full">
-
+<html lang="fr" class="h-full">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dashboard</title>
-  <link rel="stylesheet" href="../../mvm.css" />
+  <title>Messagerie - Dashboard</title>
+
   <link rel="stylesheet" href="../../src/styles/output.css" />
-
-  <!-- DaisyUI -->
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-
-  <!-- Bootstrap Icons -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="../../mvm.css" />
 </head>
-
-<body class="h-full"> 
-  <!-- Page shell: messaging dashboard layout -->  
+<body class="h-full overflow-x-hidden">
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
+
   <div class="flex flex-col h-full justify-center gap-3 px-2 py-2 sm:flex-row sm:gap-5 sm:px-3 sm:py-3 relative z-0">
-    
     <input id="menuToggle" type="checkbox" class="peer sr-only" />
     <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 sm:hidden peer-checked:block"></label>
-    
-    <aside class="fixed left-0 top-0 z-50 hidden h-full w-72 max-w-[85vw] flex-col justify-start gap-2 rounded-r-lg border-2 border-white/20 bg-black/40 px-2 py-3 backdrop-blur-sm peer-checked:flex sm:static sm:flex sm:h-full sm:w-64 sm:flex-col sm:justify-start sm:gap-4 sm:overflow-y-auto sm:bg-white/10 sm:backdrop-blur-none lg:w-64 shrink-0">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
       <label for="menuToggle" class="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white sm:hidden" aria-label="Fermer le menu">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-        </svg>
+        <i class="bi bi-x icon-size"></i>
       </label>
       <img src="../../assets/Logo.svg" alt="" class="mx-auto w-full max-w-[100px] sm:max-w-[120px] md:max-w-[150px] xl:max-w-full" />
-
       <div class="flex w-full flex-col gap-1 sm:gap-2 mt-4 sm:mt-0">
-        <a href="../dashboard/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Dashboard >
-          </span>
-        </a>
-        <a href="../users/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Utilisateurs >
-          </span>
-        </a>
-        <a href="../messages/index.html" class="w-full">
-          <span class="flex items-center rounded bg-brand px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Messagerie >
-          </span>
-        </a>
-        <a href="../tasks/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Taches >
-          </span>
-        </a>
-        <a href="#" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Calendrier >
-          </span>
-        </a>
-        <a href="../account/index.html" class="w-full">
-          <span class="flex items-center rounded px-2 py-2 text-sm text-white sm:text-base lg:text-xl xl:text-2xl">
-            Comptes >
-          </span>
-        </a>
+        <a href="../dashboard/index.html" class="w-full"><span class="sidebar-link">Dashboard &gt;</span></a>
+        <a href="../users/index.html" class="w-full"><span class="sidebar-link">Utilisateurs &gt;</span></a>
+        <a href="../messages/index.html" class="w-full"><span class="sidebar-link sidebar-link-active">Messagerie &gt;</span></a>
+        <a href="../tasks/index.html" class="w-full"><span class="sidebar-link">Tâches &gt;</span></a>
+        <a href="#" class="w-full"><span class="sidebar-link">Calendrier &gt;</span></a>
+        <a href="../account/index.html" class="w-full"><span class="sidebar-link">Comptes &gt;</span></a>
       </div>
     </aside>
 
+    <!-- Contenu principal -->
     <div class="flex h-full min-w-0 flex-col gap-4 w-full">
-      <!-- Main messaging page wrapper -->
+      <!-- En-tête -->
       <header class="flex flex-col gap-3 rounded-lg border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35 shrink-0">
         <div class="flex items-center gap-2">
           <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white sm:hidden" aria-label="Ouvrir le menu">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            <i class="bi bi-list icon-size"></i>
           </label>
           <div class="flex flex-col gap-1 sm:gap-2">
             <h1 class="flex text-lg font-semibold text-white sm:text-xl lg:text-2xl">Bonjour, Aïcha Diop</h1>
             <span class="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-gray-300">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-house-fill" viewBox="0 0 16 16">
-                <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293z" />
-                <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293z" />
-              </svg>
-              >
+              <i class="bi bi-house-fill text-white text-sm sm:text-base lg:text-xl xl:text-2xl"></i>
+              &gt;
               <p>tableau de board</p>
             </span>
           </div>
         </div>
-        <!-- les trois icones dans l'angle droit du header -->
+
+        <!-- Icônes de droite -->
         <div class="flex flex-wrap items-center justify-end gap-3 sm:gap-4">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-gear h-6 w-6 lg:h-7 lg:w-7 2xl:h-8 2xl:w-8 cursor-pointer" viewBox="0 0 16 16">
-            <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
-            <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
-          </svg>
+          <i class="bi bi-gear icon-size text-white cursor-pointer"></i>
           <div class="relative cursor-pointer">
             <span class="flex absolute w-2.5 h-2.5 border top-0 right-0 bg-brand rounded-full"></span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-bell h-6 w-6 lg:h-7 lg:w-7 2xl:h-8 2xl:w-8" viewBox="0 0 16 16">
-              <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6" />
-            </svg>
+            <i class="bi bi-bell icon-size text-white"></i>
           </div>
           <a href="../auth/index.html" aria-label="Profil utilisateur">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-person h-6 w-6 lg:h-7 lg:w-7 2xl:h-8 2xl:w-8" viewBox="0 0 16 16">
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
-            </svg>
+            <i class="bi bi-person icon-size text-white"></i>
           </a>
         </div>
       </header>
 
-      <main class="flex flex-col bg-white/20 p-2 sm:p-4 w-full h-[90%] backdrop-blur rounded-lg overflow-y-auto">
-        <div class="flex flex-col gap-2 relative">
-          
-          <!-- Conteneur d'onglets refactorisé -->
-          <div class="flex relative lg:flex-nowrap rounded-lg bg-white/20 border-2 border-white/20 px-2 sm:px-4 lg:px-14 py-2 lg:py-1 justify-center lg:justify-between gap-2 lg:gap-0 text-white z-10">
-            
-            <label class="cursor-pointer">
-              <input name="recep" type="radio" class="hidden peer" checked />
-              <div class="flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] peer-checked:border border-white/20 px-3 lg:px-4 peer-checked:bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)] text-sm lg:text-base">
-                <i class="bi bi-envelope text-lg lg:text-2xl"></i>
-                <p>Reception</p>
-              </div>
-              
-              <!-- Liste des messages (Contenu absolu) -->
-              <div class="absolute left-0 top-full mt-2 lg:mt-4 w-full px-1 lg:px-3 shadow-[0_20px_40px_rgba(0,0,0,0.6)] pb-6 hidden peer-checked:flex flex-col gap-3 lg:gap-2 z-20">
-                <div class="flex flex-col gap-2">
-                  <div class="flex rounded-lg text-xl lg:text-3xl px-3 lg:px-6 py-3 lg:py-4 justify-between text-white flex-wrap gap-4">
-                    <div class="flex gap-4 lg:gap-3 items-center">
-                      <div class="flex items-center">
-                        <input type="checkbox" class="h-5 w-5 lg:h-6 lg:w-6 cursor-pointer border border-white/40 bg-white/10" aria-label="Tout sélectionner" />
-                      </div>
-                      <i class="bi bi-trash3 cursor-pointer hover:text-red-400 transition-colors"></i>
-                      <i class="bi bi-envelope-open cursor-pointer hover:text-gray-300 transition-colors"></i>
-                      <i class="bi bi-folder cursor-pointer hover:text-gray-300 transition-colors"></i>
-                      <i class="bi bi-tag cursor-pointer hover:text-gray-300 transition-colors"></i>
-                    </div>
-                    <div class="flex items-center gap-4 lg:gap-3">
-                      <i class="bi bi-arrow-clockwise cursor-pointer hover:text-gray-300 transition-colors"></i>
-                      <i class="bi bi-three-dots-vertical cursor-pointer hover:text-gray-300 transition-colors"></i>
-                    </div>
+      <!-- Zone principale de messagerie -->
+      <main class="flex flex-col bg-white/20 p-2 sm:p-4 w-full flex-1 backdrop-blur rounded-lg overflow-y-auto">
+        <!-- Onglets -->
+        <div class="flex relative lg:flex-nowrap rounded-lg bg-white/20 border-2 border-white/20 px-2 sm:px-4 lg:px-14 py-2 lg:py-1 justify-center lg:justify-between gap-2 lg:gap-0 text-white z-10">
+          <!-- Onglet Réception -->
+          <label class="cursor-pointer">
+            <input name="recep" type="radio" class="hidden peer" checked />
+            <div class="tab-label peer-checked:tab-active">
+              <i class="bi bi-envelope text-lg lg:text-2xl"></i>
+              <p>Réception</p>
+            </div>
+            <div class="tab-panel hidden peer-checked:flex flex-col gap-3 lg:gap-2">
+              <!-- Barre d'actions messages -->
+              <div class="flex rounded-lg text-xl lg:text-3xl px-3 lg:px-6 py-3 lg:py-4 justify-between text-white flex-wrap gap-4">
+                <div class="flex gap-4 lg:gap-3 items-center">
+                  <div class="flex items-center">
+                    <input type="checkbox" class="table-checkbox" aria-label="Tout sélectionner" />
                   </div>
+                  <i class="bi bi-trash3 cursor-pointer hover:text-red-400 transition-colors"></i>
+                  <i class="bi bi-envelope-open cursor-pointer hover:text-gray-300 transition-colors"></i>
+                  <i class="bi bi-folder cursor-pointer hover:text-gray-300 transition-colors"></i>
+                  <i class="bi bi-tag cursor-pointer hover:text-gray-300 transition-colors"></i>
                 </div>
-
-                <!-- Message 1 -->
-                <div class="flex flex-col lg:flex-row rounded-lg bg-white/20 px-3 lg:px-4 py-4 lg:py-6 gap-3 lg:gap-4 text-white hover:bg-white/30 transition-colors cursor-pointer">
-                  <div class="flex gap-4 w-full lg:w-1/3 text-xl lg:text-3xl items-center">
-                    <input type="checkbox" class="h-5 w-5 lg:h-6 lg:w-6 cursor-pointer border border-white/40 bg-white/10" />
-                    <i class="bi bi-pin-angle"></i>
-                  </div>
-                  <div class="flex items-center w-full lg:w-[60%] gap-3">
-                    <div class="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full">
-                      <p class="text-orange-500 font-bold text-xl lg:text-3xl">AS</p>
-                    </div>
-                    <p class="font-medium text-sm lg:text-base">S. Traoré</p>
-                  </div>
-                  <div class="w-full lg:w-[60%] flex flex-col justify-center">
-                    <p class="font-semibold text-sm lg:text-base">Rapport du cas du client</p>
-                    <p class="text-xs lg:text-sm text-gray-200">N°00000</p>
-                  </div>
-                  <div class="w-full lg:w-[80%] flex items-center">
-                    <p class="text-sm lg:text-base text-gray-200 line-clamp-2 lg:line-clamp-1">Lorem ipsum dolor sit dioka ipsum...</p>
-                  </div>
-                  <div class="w-full lg:w-[20%] flex items-center justify-end lg:justify-start">
-                    <p class="text-xs lg:text-sm text-gray-300">08:23 AM</p>
-                  </div>
-                </div>
-                
-                <!-- Message 2 -->
-                <div class="flex flex-col lg:flex-row rounded-lg bg-white/20 px-3 lg:px-4 py-4 lg:py-6 gap-3 lg:gap-4 text-white hover:bg-white/30 transition-colors cursor-pointer">
-                  <div class="flex gap-4 w-full lg:w-1/3 text-xl lg:text-3xl items-center">
-                    <input type="checkbox" class="h-5 w-5 lg:h-6 lg:w-6 cursor-pointer border border-white/40 bg-white/10" />
-                    <i class="bi bi-pin-angle"></i>
-                  </div>
-                  <div class="flex items-center w-full lg:w-[60%] gap-3">
-                    <div class="flex items-center justify-center shrink-0 w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-full">
-                      <p class="text-orange-500 font-bold text-xl lg:text-3xl">AS</p>
-                    </div>
-                    <p class="font-medium text-sm lg:text-base">S. Traoré</p>
-                  </div>
-                  <div class="w-full lg:w-[60%] flex flex-col justify-center">
-                    <p class="font-semibold text-sm lg:text-base">Rapport du cas du client</p>
-                    <p class="text-xs lg:text-sm text-gray-200">N°00000</p>
-                  </div>
-                  <div class="w-full lg:w-[80%] flex items-center">
-                    <p class="text-sm lg:text-base text-gray-200 line-clamp-2 lg:line-clamp-1">Lorem ipsum dolor sit dioka ipsum...</p>
-                  </div>
-                  <div class="w-full lg:w-[20%] flex items-center justify-end lg:justify-start">
-                    <p class="text-xs lg:text-sm text-gray-300">08:23 AM</p>
-                  </div>
+                <div class="flex items-center gap-4 lg:gap-3">
+                  <i class="bi bi-arrow-clockwise cursor-pointer hover:text-gray-300 transition-colors"></i>
+                  <i class="bi bi-three-dots-vertical cursor-pointer hover:text-gray-300 transition-colors"></i>
                 </div>
               </div>
-            </label>
 
-            <!-- Onglet Envoi -->
-            <label class="cursor-pointer">
-              <input name="recep" type="radio" class="hidden peer" />
-              <div class="flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] peer-checked:border border-white/20 px-3 lg:px-4 peer-checked:bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)] text-sm lg:text-base">
-                <i class="bi bi-send text-lg lg:text-2xl"></i>
-                <p>Envoi</p>
+              <!-- Lignes de messages -->
+              <div class="message-row">
+                <div class="flex gap-4 w-full lg:w-1/3 text-xl lg:text-3xl items-center">
+                  <input type="checkbox" class="table-checkbox" />
+                  <i class="bi bi-pin-angle"></i>
+                </div>
+                <div class="flex items-center w-full lg:w-[60%] gap-3">
+                  <div class="user-avatar">AS</div>
+                  <p class="font-medium text-sm lg:text-base">S. Traoré</p>
+                </div>
+                <div class="w-full lg:w-[60%] flex flex-col justify-center">
+                  <p class="font-semibold text-sm lg:text-base">Rapport du cas du client</p>
+                  <p class="text-xs lg:text-sm text-gray-200">N°00000</p>
+                </div>
+                <div class="w-full lg:w-[80%] flex items-center">
+                  <p class="text-sm lg:text-base text-gray-200 line-clamp-2 lg:line-clamp-1">Lorem ipsum dolor sit dioka ipsum...</p>
+                </div>
+                <div class="w-full lg:w-[20%] flex items-center justify-end lg:justify-start">
+                  <p class="text-xs lg:text-sm text-gray-300">08:23 AM</p>
+                </div>
               </div>
-              <div class="absolute left-0 top-[100%] mt-2 lg:mt-4 w-full px-1 lg:px-3 shadow-[0_20px_40px_rgba(0,0,0,0.6)] pb-6 hidden peer-checked:flex flex-col gap-3 lg:gap-2 z-20">
-                <p class="text-white p-4">Boîte d'envoi vide...</p>
-              </div>
-            </label>
+              <!-- Dupliquer message-row pour autant de messages que nécessaire -->
+            </div>
+          </label>
 
-            <!-- Onglet Brouillon -->
-            <label class="cursor-pointer">
-              <input name="recep" type="radio" class="hidden peer" />
-              <div class="flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] peer-checked:border border-white/20 px-3 lg:px-4 peer-checked:bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)] text-sm lg:text-base">
-                <i class="bi bi-envelope text-lg lg:text-2xl"></i>
-                <p>Brouillon</p>
-              </div>
-            </label>
+          <!-- Onglet Envoi -->
+          <label class="cursor-pointer">
+            <input name="recep" type="radio" class="hidden peer" />
+            <div class="tab-label peer-checked:tab-active">
+              <i class="bi bi-send text-lg lg:text-2xl"></i>
+              <p>Envoi</p>
+            </div>
+            <div class="tab-panel hidden peer-checked:flex flex-col gap-3 lg:gap-2">
+              <p class="text-white p-4">Boîte d'envoi vide...</p>
+            </div>
+          </label>
 
-            <!-- Onglet Epinglé -->
-            <label class="cursor-pointer">
-              <input name="recep" type="radio" class="hidden peer" />
-              <div class="flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] peer-checked:border border-white/20 px-3 lg:px-4 peer-checked:bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)] text-sm lg:text-base">
-                <i class="bi bi-envelope text-lg lg:text-2xl"></i>
-                <p>Epinglé</p>
-              </div>
-            </label>
+          <!-- Onglet Brouillon -->
+          <label class="cursor-pointer">
+            <input name="recep" type="radio" class="hidden peer" />
+            <div class="tab-label peer-checked:tab-active">
+              <i class="bi bi-envelope text-lg lg:text-2xl"></i>
+              <p>Brouillon</p>
+            </div>
+            <div class="tab-panel hidden peer-checked:flex">Brouillons vides...</div>
+          </label>
 
-            <!-- Onglet Spam -->
-            <label class="cursor-pointer">
-              <input name="recep" type="radio" class="hidden peer" />
-              <div class="flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] peer-checked:border border-white/20 px-3 lg:px-4 peer-checked:bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)] text-sm lg:text-base">
-                <i class="bi bi-envelope text-lg lg:text-2xl"></i>
-                <p>Spam</p>
-              </div>
-            </label>
+          <!-- Onglet Épinglé -->
+          <label class="cursor-pointer">
+            <input name="recep" type="radio" class="hidden peer" />
+            <div class="tab-label peer-checked:tab-active">
+              <i class="bi bi-pin-angle text-lg lg:text-2xl"></i>
+              <p>Épinglé</p>
+            </div>
+            <div class="tab-panel hidden peer-checked:flex">Aucun message épinglé.</div>
+          </label>
 
-            <!-- Onglet Corbeille -->
-            <label class="cursor-pointer">
-              <input name="recep" type="radio" class="hidden peer" />
-              <div class="flex items-center rounded-lg gap-1 lg:gap-2 py-2 lg:py-[0.9em] peer-checked:border border-white/20 px-3 lg:px-4 peer-checked:bg-[radial-gradient(circle,transparent_0%,rgba(255,255,255,0.3)_70%,rgba(255,255,255,0.6)_100%)] text-sm lg:text-base">
-                <i class="bi bi-envelope text-lg lg:text-2xl"></i>
-                <p>Corbeille</p>
-              </div>
-            </label>
+          <!-- Onglet Spam -->
+          <label class="cursor-pointer">
+            <input name="recep" type="radio" class="hidden peer" />
+            <div class="tab-label peer-checked:tab-active">
+              <i class="bi bi-envelope-exclamation text-lg lg:text-2xl"></i>
+              <p>Spam</p>
+            </div>
+            <div class="tab-panel hidden peer-checked:flex">Aucun spam.</div>
+          </label>
 
-          </div>
+          <!-- Onglet Corbeille -->
+          <label class="cursor-pointer">
+            <input name="recep" type="radio" class="hidden peer" />
+            <div class="tab-label peer-checked:tab-active">
+              <i class="bi bi-trash3 text-lg lg:text-2xl"></i>
+              <p>Corbeille</p>
+            </div>
+            <div class="tab-panel hidden peer-checked:flex">Corbeille vide.</div>
+          </label>
         </div>
       </main>
     </div>
