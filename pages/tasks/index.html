@@ -15,6 +15,12 @@
   <div class="bg bg3"></div>
 
   <div class="flex h-full justify-center gap-5 items-center py-2 px-3">
+
+    <!-- Menu mobile : checkbox caché pour le hack d'ouverture -->
+    <input id="menuToggle" type="checkbox" class="peer sr-only" />
+    <!-- Overlay mobile -->
+    <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 md:hidden peer-checked:block"></label>
+
     <!-- Sidebar -->
     <aside class="sidebar">
       <img src="../../assets/Logo.svg" alt="" class="mx-auto w-full max-w-[100px] sm:max-w-[120px] md:max-w-[150px] xl:max-w-full" />
@@ -31,23 +37,32 @@
     <!-- Contenu principal -->
     <div class="flex flex-col gap-4 w-full h-full">
       <!-- En-tête -->
-      <header class="flex items-center justify-between border-2 border-white/20 bg-white/10 px-3 w-full h-35 rounded">
-        <div class="flex flex-col gap-2">
-          <h1 class="flex text-white text-2xl">Bonjour, Aïcha Diop</h1>
-          <span class="flex items-center gap-2 text-gray-300">
-            <i class="bi bi-house-fill text-white text-xl"></i>
-            &gt;
-            <p>tableau de board</p>
-          </span>
+     <header class="flex flex-col gap-3 rounded border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
+        <div class="flex items-center gap-2">
+          <!-- Bouton burger mobile -->
+          <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white md:hidden" aria-label="Ouvrir le menu">
+            <i class="bi bi-list icon-size"></i>
+          </label>
+          <div class="flex flex-col gap-2">
+            <h1 class="flex text-xl text-white sm:text-2xl">Bonjour, Aïcha Diop</h1>
+            <span class="flex flex-wrap items-center gap-2 text-gray-300">
+              <i class="bi bi-house-fill text-white text-sm sm:text-base lg:text-xl xl:text-2xl"></i>
+              &gt;
+              <p>tableau de board</p>
+            </span>
+          </div>
         </div>
+
         <!-- Icônes de droite -->
-        <div class="flex gap-1">
-          <i class="bi bi-gear icon-size text-white"></i>
+        <div class="flex flex-wrap items-center justify-end gap-2 sm:gap-1">
+          <i class="bi bi-gear icon-size text-3xl text-white"></i>
           <div class="relative">
             <span class="flex absolute w-2 h-2 border top-0 right-0 bg-brand rounded-full"></span>
             <i class="bi bi-bell icon-size text-white"></i>
           </div>
-          <a href="../auth/index.html"><i class="bi bi-person icon-size text-white"></i></a>
+          <a href="../auth/index.html">
+            <i class="bi bi-person icon-size text-white"></i>
+          </a>
         </div>
       </header>
 

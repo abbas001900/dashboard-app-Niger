@@ -69,8 +69,8 @@ body {
   @apply fixed left-0 top-0 z-50 hidden h-full w-72 max-w-[85vw] flex-col justify-start gap-2
          rounded-r-lg border-2 border-white/20 bg-black/40 px-2 py-3 backdrop-blur-sm
          peer-checked:flex
-         sm:static sm:flex sm:h-full sm:w-64 sm:flex-col sm:justify-start sm:gap-4
-         sm:overflow-y-auto sm:bg-white/10 sm:backdrop-blur-none lg:w-64 shrink-0;
+         md:static md:flex md:h-full sm:w-50 sm:flex-col md:justify-start md:gap-4
+         md:overflow-y-auto sm:bg-white/10 md:backdrop-blur-none lg:w-64 shrink-0;
 }
 
 /* --- Liens du menu latéral --- */
@@ -88,7 +88,7 @@ body {
 /* --- Icônes --- */
 /* Taille responsive pour toutes les icônes */
 .icon-size {
-  @apply h-6 w-6 2xl:h-8 2xl:w-8;
+  @apply sm:text-3xl text-xl;
 }
 
 /* --- Cartes statistiques (utilisateurs, tâches) --- */
@@ -198,11 +198,11 @@ body {
 
 /* --- Tableau Kanban --- */
 .kanban-board {
-  @apply flex justify-center gap-5 w-full;
+  @apply flex flex-col justify-center gap-5 w-full lg:flex-row;
 }
 
 .kanban-column {
-  @apply flex flex-col w-full md:w-[33%] bg-white/20 gap-3 rounded-lg pt-2 px-2;
+  @apply flex flex-col w-full lg:w-[33%] bg-white/20 gap-3 rounded-lg pt-2 px-2;
 }
 
 /* --- Carte de tâche (Kanban) --- */
