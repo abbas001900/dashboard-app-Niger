@@ -3,6 +3,8 @@
 @theme {
   --color-brand: #ff6c33;
   --color-brand-dark: #1f2937;
+  /* Définition d'un breakpoint minimal à 850px */
+  --breakpoint-tablet: 1190px;
 }
 
 @layer base {
@@ -69,7 +71,7 @@ body {
   @apply fixed left-0 top-0 z-50 hidden h-full w-72 max-w-[85vw] flex-col justify-start gap-2
          rounded-r-lg border-2 border-white/20 bg-black/40 px-2 py-3 backdrop-blur-sm
          peer-checked:flex
-         md:static md:flex md:h-full sm:w-50 sm:flex-col md:justify-start md:gap-4
+         md:static tablet:flex md:h-full md:w-50 sm:flex-col md:justify-start md:gap-4
          md:overflow-y-auto sm:bg-white/10 md:backdrop-blur-none lg:w-64 shrink-0;
 }
 
@@ -174,7 +176,7 @@ body {
 
 /* --- Sélecteur de mode (Kanban/Liste/Calendrier) --- */
 .mode-switcher {
-  @apply flex justify-between relative rounded-lg mx-3 px-2 py-1 text-white 
+  @apply flex flex-wrap items-center md:items-start justify-center md:justify-between relative rounded-lg mx-3 px-2 py-1 text-white 
          shadow-[0_3px_10px_rgba(0,0,0,0.4)] bg-white/20 
          bg-[linear-gradient(to_bottom,white_0.01%,white_0.01%,transparent_1%,transparent_2%)];
 }
@@ -193,12 +195,12 @@ body {
 }
 
 .mode-panel {
-  @apply absolute mt-4 rounded-lg left-0 right-0 w-full;
+  @apply absolute mt-32 md:mt-4 rounded-lg left-0 right-0 w-full;
 }
 
 /* --- Tableau Kanban --- */
 .kanban-board {
-  @apply flex flex-col justify-center gap-5 w-full lg:flex-row;
+  @apply flex flex-wrap lg:flex-nowrap flex-col justify-center gap-5 lg:justify-between w-full lg:flex-row;
 }
 
 .kanban-column {
@@ -248,7 +250,7 @@ body {
 }
 
 .form-input {
-  @apply border-2 border-gray-300 placeholder:text-white/30 rounded-lg py-1.5 
+  @apply px-2 border-2 border-gray-300 placeholder:text-white/30 rounded-lg py-1.5 
          focus:outline-none focus:ring-2 focus:ring-green-500 bg-transparent text-white;
 }
 

@@ -19,7 +19,7 @@
     <!-- Menu mobile : checkbox caché pour le hack d'ouverture -->
     <input id="menuToggle" type="checkbox" class="peer sr-only" />
     <!-- Overlay mobile -->
-    <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 md:hidden peer-checked:block"></label>
+    <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 lg:hidden peer-checked:block"></label>
 
     <!-- Sidebar -->
     <aside class="sidebar">
@@ -40,7 +40,7 @@
      <header class="flex flex-col gap-3 rounded border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
         <div class="flex items-center gap-2">
           <!-- Bouton burger mobile -->
-          <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white md:hidden" aria-label="Ouvrir le menu">
+          <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white lg:hidden" aria-label="Ouvrir le menu">
             <i class="bi bi-list icon-size"></i>
           </label>
           <div class="flex flex-col gap-2">
@@ -71,22 +71,22 @@
         <div class="flex flex-col gap-2">
           <!-- Sélecteur de mode : Kanban / Liste / Calendrier -->
           <div class="mode-switcher">
-            <p>Changer le mode visualisation</p>
-            <div class="flex">
+            <p class="hidden lg:block">Changer le mode visualisation</p>
+            <div class="flex flex-wrap justify-center items-center">
               <!-- Mode Kanban -->
               <label class="mode-label">
                 <input name="viewMode" type="radio" class="hidden peer" checked />
                 <div class="mode-button peer-checked:mode-active">
-                  <i class="bi bi-kanban text-3xl"></i>
-                  <p class="text-xl">Kanban</p>
+                  <i class="bi bi-kanban text-xl md:text-3xl"></i>
+                  <p class="text-lg md:text-xl">Kanban</p>
                 </div>
                 <div class="mode-panel hidden peer-checked:flex">
                   <div class="kanban-board">
                     <!-- Colonne En attente -->
                     <div class="kanban-column">
                       <span class="flex items-center gap-4">
-                        <i class="bi bi-hourglass-top text-3xl"></i>
-                        <p class="text-2xl">Tâche en attente</p>
+                        <i class="bi bi-hourglass-top text-xl md:text-3xl"></i>
+                        <p class="text-lg md:text-2xl">Tâche en attente</p>
                       </span>
                       <!-- Cartes de tâches (répéter pour chaque tâche) -->
                       <div class="task-card">
@@ -97,24 +97,24 @@
                           <div class="avatar-circle -ml-3">TP</div>
                           <div class="avatar-circle -ml-3">SC</div>
                         </div>
-                        <div class="flex gap-4"><i class="bi bi-calendar text-3xl"></i><p>17 Mars - 20 Mars</p></div>
-                        <div class="flex gap-4"><i class="bi bi-bookmark text-3xl"></i><p>Ombre de priorité</p></div>
+                        <div class="flex gap-4"><i class="bi bi-calendar text-xl md:text-3xl"></i><p>17 Mars - 20 Mars</p></div>
+                        <div class="flex gap-4"><i class="bi bi-bookmark text-xl md:text-3xl"></i><p>Ombre de priorité</p></div>
                       </div>
                       <!-- ... autres cartes ... -->
                     </div>
                     <!-- Colonne En cours -->
                     <div class="kanban-column">
                       <span class="flex items-center gap-4">
-                        <i class="bi bi-hourglass-split text-3xl"></i>
-                        <p class="text-2xl">Tâche en cours</p>
+                        <i class="bi bi-hourglass-split text-xl md:text-3xl"></i>
+                        <p class="text-lg md:text-2xl">Tâche en cours</p>
                       </span>
                       <div class="task-card">...</div>
                     </div>
                     <!-- Colonne Terminé -->
                     <div class="kanban-column">
                       <span class="flex items-center gap-4">
-                        <i class="bi bi-hourglass-bottom text-3xl"></i>
-                        <p class="text-2xl">Tâche terminée</p>
+                        <i class="bi bi-hourglass-bottom text-xl md:text-3xl"></i>
+                        <p class="text-lg md:text-2xl">Tâche terminée</p>
                       </span>
                       <div class="task-card">...</div>
                     </div>
@@ -126,37 +126,37 @@
               <label class="mode-label">
                 <input name="viewMode" type="radio" class="hidden peer" />
                 <div class="mode-button peer-checked:mode-active">
-                  <i class="bi bi-list-ul text-3xl"></i>
-                  <p class="text-xl">Liste</p>
+                  <i class="bi bi-list-ul text-xl md:text-3xl"></i>
+                  <p class="text-lg md:text-xl">Liste</p>
                 </div>
                 <div class="mode-panel hidden peer-checked:flex flex-col gap-4">
                   <!-- Filtres de statut -->
-                  <div class="flex relative px-40 rounded-lg bg-white/20 border-2 border-white/20 w-full mt-8 py-1 justify-between text-white">
+                  <div class="flex flex-wrap relative items-center md:px-40 rounded-lg bg-white/20 border-2 border-white/20 w-full mt-8 py-1 justify-between text-white">
                     <label class="cursor-pointer">
                       <input name="taskStatus" type="radio" class="hidden peer" checked />
                       <div class="mode-button peer-checked:mode-active">
-                        <i class="bi bi-hourglass-top text-2xl"></i>
+                        <i class="bi bi-hourglass-top text-lg md:text-2xl"></i>
                         <p>En attente</p>
                       </div>
                     </label>
                     <label class="cursor-pointer">
                       <input name="taskStatus" type="radio" class="hidden peer" />
                       <div class="mode-button peer-checked:mode-active">
-                        <i class="bi bi-hourglass-split text-2xl"></i>
+                        <i class="bi bi-hourglass-split text-lg md:text-2xl"></i>
                         <p>En cours</p>
                       </div>
                     </label>
                     <label class="cursor-pointer">
                       <input name="taskStatus" type="radio" class="hidden peer" />
                       <div class="mode-button peer-checked:mode-active">
-                        <i class="bi bi-hourglass-bottom text-2xl"></i>
+                        <i class="bi bi-hourglass-bottom text-lg md:text-2xl"></i>
                         <p>Terminé</p>
                       </div>
                     </label>
                   </div>
                   <!-- Tableau liste -->
-                  <div class="overflow-x-auto px-4 pb-6">
-                    <div class="rounded-lg border border-white/20 bg-white/10 p-4">
+                  <div class="md:px-4 pb-6">
+                    <div class="rounded-lg border border-white/20 bg-white/10 p-4 overflow-x-auto">
                       <table class="min-w-full border-separate border-spacing-y-2">
                         <tbody>
                           <tr class="table-row">
@@ -192,8 +192,8 @@
               <label class="mode-label">
                 <input name="viewMode" type="radio" class="hidden peer" />
                 <div class="mode-button peer-checked:mode-active">
-                  <i class="bi bi-calendar-range text-3xl"></i>
-                  <p class="text-xl">Calendrier</p>
+                  <i class="bi bi-calendar-range text-xl md:text-3xl"></i>
+                  <p class="text-lg md:text-xl">Calendrier</p>
                 </div>
                 <div class="mode-panel hidden peer-checked:flex">
                   <p class="text-white p-4">Vue calendrier à implémenter</p>
