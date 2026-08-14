@@ -176,7 +176,7 @@ body {
 
 /* --- Sélecteur de mode (Kanban/Liste/Calendrier) --- */
 .mode-switcher {
-  @apply flex flex-wrap items-center md:items-start justify-center md:justify-between relative rounded-lg mx-3 px-2 py-1 text-white 
+  @apply flex flex-wrap md:items-start justify-center md:justify-between relative rounded-lg mx-3 px-2 py-1 text-white 
          shadow-[0_3px_10px_rgba(0,0,0,0.4)] bg-white/20 
          bg-[linear-gradient(to_bottom,white_0.01%,white_0.01%,transparent_1%,transparent_2%)];
 }
@@ -195,7 +195,15 @@ body {
 }
 
 .mode-panel {
-  @apply absolute mt-32 md:mt-4 rounded-lg left-0 right-0 w-full;
+  @apply absolute top-32 rounded-lg left-0 right-0 w-full;
+}
+
+.list-mode-panel {
+  @apply absolute rounded-lg top-32 sm:top-24 border-2 left-0 right-0 w-full;
+}
+
+.list-panel {
+  @apply absolute md:mt-4 rounded-lg top-34 sm:top-24 left-0 right-0 w-full;
 }
 
 /* --- Tableau Kanban --- */
