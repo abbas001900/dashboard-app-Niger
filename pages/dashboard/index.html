@@ -24,7 +24,7 @@
     <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 lg:hidden peer-checked:block"></label>
 
     <!-- Barre latérale -->
-    <aside class="sidebar">
+    <aside class="sidebar shadow-interieur">
       <!-- Bouton fermeture mobile -->
       <label for="menuToggle" class="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white lg:hidden" aria-label="Fermer le menu">
         <i class="bi bi-x icon-size"></i>
@@ -59,7 +59,7 @@
     <!-- Contenu principal -->
     <div class="flex h-full min-w-0 flex-col gap-4 w-full">
       <!-- En-tête -->
-      <header class="flex flex-col gap-3 rounded border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
+      <header class="flex flex-col gap-3 rounded shadow-interieur bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
         <div class="flex items-center gap-2">
           <!-- Bouton burger mobile -->
           <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white sm:hidden" aria-label="Ouvrir le menu">
@@ -94,12 +94,12 @@
       </header>
 
       <!-- Zone principale : contenu du dashboard -->
-      <main class="w-full rounded-lg border-2 border-white/20 h-full overflow-y-scroll">
+      <main class="w-full rounded-lg shadow-interieur h-full bg-white/10 overflow-scroll no-scrollbar">
         <div class="flex flex-col gap-4 p-2 lg:flex-row">
           <!-- Colonne de gauche : carte du Niger -->
           <div class="flex w-full flex-col gap-2 min-w-0 lg:w-[48%] md:gap-3">
             <p class="text-xl text-white sm:text-2xl 2xl:text-xl">Statistiques Nationale</p>
-            <div class="flex w-full flex-col justify-center rounded-lg border-2 border-white/20 bg-white/10">
+            <div class="flex w-full flex-col justify-center rounded-lg shadow-interieur bg-white/10">
               <!-- SVG de la carte (inchangé) -->
               <svg baseprofile="tiny" fill="#FF6C33" stroke="#FFFFFF" stroke-linecap="round" stroke-linejoin="round"
                 stroke-width=".8" version="1.2" viewbox="0 0 1000 786" xmlns="http://www.w3.org/2000/svg"
@@ -156,7 +156,7 @@
           <div class="flex flex-col gap-4 lg:flex-row">
             <div class="flex h-fit w-full flex-col gap-4 lg:w-1/2">
               <!-- Carte utilisateurs -->
-              <div class="card-stat">
+              <div class="card-stat shadow-interieur">
                 <p class="text-white text-base md:text-lg xl:text-xl">Statistiques des utilisateurs</p>
 
                 <!-- SVG donut (ID unique) -->
@@ -216,7 +216,7 @@
               </div>
 
               <!-- Notifications -->
-              <div class="notification-box">
+              <div class="notification-box shadow-interieur">
                 <p class="flex w-full justify-center pb-4 text-xl">Dernières notifications</p>
                 <p class="py-2 px-1 bg-white/20">Lorem ipsum ...</p>
                 <p class="py-2 px-1">Lorem ipsum ...</p>
@@ -227,7 +227,7 @@
 
             <div class="flex h-full w-full flex-col gap-4 lg:w-1/2">
               <!-- Carte tâches -->
-              <div class="card-stat">
+              <div class="card-stat shadow-interieur">
                 <p class="text-white text-base md:text-lg xl:text-xl">Statistiques des tâches</p>
 
                 <svg viewBox="0 0 2253.00 2253.00" class="max-h-24" version="1.1" xml:space="preserve" style="
@@ -290,7 +290,7 @@
               </div>
 
               <!-- Notifications -->
-              <div class="notification-box">
+              <div class="notification-box shadow-interieur">
                 <p class="flex w-full justify-center pb-4 text-xl">Dernières notifications</p>
                 <p class="py-2 px-1 bg-white/20">Lorem ipsum ...</p>
                 <p class="py-2 px-1">Lorem ipsum ...</p>

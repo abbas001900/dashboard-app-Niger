@@ -24,7 +24,7 @@
     <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 lg:hidden peer-checked:block"></label>
 
     <!-- Sidebar -->
-    <aside class="sidebar">
+    <aside class="sidebar shadow-interieur">
       <img src="../../assets/Logo.svg" alt=""
         class="mx-auto w-full max-w-[100px] sm:max-w-[120px] md:max-w-[150px] xl:max-w-full" />
       <div class="flex flex-col gap-1 md:gap-2">
@@ -41,11 +41,11 @@
     <div class="flex flex-col gap-4 w-full h-full">
       <!-- En-tête -->
       <header
-        class="flex flex-col gap-3 rounded border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
+        class="shadow-interieur flex flex-col gap-3 rounded  bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
         <div class="flex items-center gap-2">
           <!-- Bouton burger mobile -->
           <label for="menuToggle"
-            class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white lg:hidden"
+            class="flex items-center justify-center rounded shadow-interieur bg-white/20 p-2 text-white lg:hidden"
             aria-label="Ouvrir le menu">
             <i class="bi bi-list icon-size"></i>
           </label>
@@ -73,10 +73,10 @@
       </header>
 
       <!-- Zone principale -->
-      <main class="flex flex-col overflow-y-auto bg-white/20 pt-3 w-full flex-1 backdrop-blur rounded-lg">
+      <main class="shadow-interieur flex flex-col overflow-y-auto no-scrollbar bg-white/20 pt-3 w-full flex-1 backdrop-blur rounded-lg">
         <div class="flex flex-col gap-2">
           <!-- Sélecteur de mode : Kanban / Liste / Calendrier -->
-          <div class="mode-switcher">
+          <div class="mode-switcher shadow-interieur">
             <p class="hidden lg:block">Changer le mode visualisation</p>
             <div class="flex flex-wrap justify-center items-center">
               <!-- Mode Kanban -->
@@ -89,7 +89,7 @@
                 <div class="mode-panel hidden peer-checked:flex">
                   <div class="kanban-board">
                     <!-- Colonne En attente -->
-                    <div class="kanban-column">
+                    <div class="kanban-column shadow-interieur">
                       <span class="flex items-center gap-4">
                         <i class="bi bi-hourglass-top text-xl md:text-3xl"></i>
                         <p class="text-lg md:text-2xl">Tâche en attente</p>
@@ -188,7 +188,7 @@
                       </div>
                     </div>
                     <!-- Colonne En cours -->
-                    <div class="kanban-column">
+                    <div class="kanban-column shadow-interieur">
                       <span class="flex items-center gap-4">
                         <i class="bi bi-hourglass-split text-xl md:text-3xl"></i>
                         <p class="text-lg md:text-2xl">Tâche en cours</p>
@@ -242,7 +242,7 @@
                       </div>
                     </div>
                     <!-- Colonne Terminé -->
-                    <div class="kanban-column">
+                    <div class="kanban-column shadow-interieur">
                       <span class="flex items-center gap-4">
                         <i class="bi bi-hourglass-bottom text-xl md:text-3xl"></i>
                         <p class="text-lg md:text-2xl">Tâche terminée</p>
@@ -354,7 +354,7 @@
                 <div class="list-mode-panel hidden peer-checked:flex flex-col gap-4">
                   <!-- Filtres de statut -->
                   <div
-                    class="flex flex-wrap relative items-center md:px-40 rounded-lg bg-white/20 border-2 border-white/20 w-full py-1 justify-between text-white">
+                    class="flex flex-wrap relative items-center md:px-40 rounded-lg bg-white/20 shadow-interieur w-full py-1 justify-between text-white">
                     <label class="cursor-pointer">
                       <input name="taskStatus" type="radio" class="hidden peer" checked />
                       <div class="mode-button peer-checked:mode-active">
@@ -364,10 +364,10 @@
                       <div class="list-panel hidden peer-checked:flex">
                         <!-- Tableau liste -->
                         <div class="md:px-4 pb-6 w-full">
-                          <div class="rounded-lg border border-white/20 bg-white/10 p-4 overflow-x-auto">
+                          <div class="rounded-lg shadow-interieur bg-white/10 p-4 overflow-x-auto no-scrollbar">
                             <table class="min-w-full border-separate border-spacing-y-2">
                               <tbody>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">
@@ -389,7 +389,7 @@
                                     </div>
                                   </td>
                                 </tr>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">
@@ -411,7 +411,7 @@
                                     </div>
                                   </td>
                                 </tr>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">
@@ -433,7 +433,7 @@
                                     </div>
                                   </td>
                                 </tr>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">
@@ -471,10 +471,10 @@
                       <div class="list-panel hidden peer-checked:flex">
                         <!-- Tableau liste -->
                         <div class="md:px-4 pb-6 w-full">
-                          <div class="rounded-lg border border-white/20 bg-white/10 p-4 overflow-x-auto">
+                          <div class="rounded-lg shadow-interieur bg-white/10 p-4 overflow-x-auto">
                             <table class="min-w-full border-separate border-spacing-y-2">
                               <tbody>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">
@@ -512,10 +512,10 @@
                       <div class="list-panel hidden peer-checked:flex">
                         <!-- Tableau liste -->
                         <div class="md:px-4 pb-6 w-full">
-                          <div class="rounded-lg border border-white/20 bg-white/10 p-4 overflow-x-auto">
+                          <div class="rounded-lg shadow-interieur bg-white/10 p-4 overflow-x-auto">
                             <table class="min-w-full border-separate border-spacing-y-2">
                               <tbody>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">
@@ -537,7 +537,7 @@
                                     </div>
                                   </td>
                                 </tr>
-                                <tr class="table-row">
+                                <tr class="table-row message-row">
                                   <td class="rounded-l-lg px-3 py-3"><input type="checkbox" class="table-checkbox" />
                                   </td>
                                   <td class="px-3 py-3">

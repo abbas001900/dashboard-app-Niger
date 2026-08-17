@@ -71,8 +71,8 @@ body {
   @apply fixed left-0 top-0 z-50 hidden h-full w-72 max-w-[85vw] flex-col justify-start gap-2
          rounded-r-lg border-2 border-white/20 bg-black/40 px-2 py-3 backdrop-blur-sm
          peer-checked:flex
-         md:static tablet:flex md:h-full md:w-50 sm:flex-col md:justify-start md:gap-4
-         md:overflow-y-auto sm:bg-white/10 md:backdrop-blur-none lg:w-64 shrink-0;
+         md:static tablet:flex md:w-50 sm:flex-col md:justify-start md:gap-4
+         md:overflow-y-auto sm:bg-white/10 md:backdrop-blur-none lg:w-64;
 }
 
 /* --- Liens du menu latéral --- */
@@ -136,7 +136,7 @@ body {
 
 /* --- Éléments du tableau --- */
 .table-row {
-  @apply rounded-lg bg-white/20;
+  @apply rounded-lg bg-white/20 border-separate border-spacing-y-2;
 }
 
 .table-checkbox {
@@ -165,7 +165,7 @@ body {
 /* --- Panneau déroulant des onglets --- */
 .tab-panel {
   @apply absolute left-0 top-full mt-2 lg:mt-4 w-full px-1 lg:px-3 
-         shadow-[0_20px_40px_rgba(0,0,0,0.6)] pb-6 z-20;
+         rounded-lg pb-6 z-20;
 }
 
 /* --- Ligne d'un message (dans la liste) --- */
@@ -293,4 +293,18 @@ body {
 /* --- Taille d'icône sociale --- */
 .social-icon-size {
   @apply w-4 h-4 xl:w-6 xl:h-6 2xl:w-12 2xl:h-12;
+}
+
+.shadow-interieur {
+  @apply shadow-[inset_0_0_5px_rgba(255,255,255,0.5)]
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }

@@ -396,6 +396,9 @@
     margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
   }
+  .overflow-scroll {
+    overflow: scroll;
+  }
   .overflow-x-auto {
     overflow-x: auto;
   }
@@ -404,9 +407,6 @@
   }
   .overflow-y-auto {
     overflow-y: auto;
-  }
-  .overflow-y-scroll {
-    overflow-y: scroll;
   }
   .rounded {
     border-radius: 0.25rem;
@@ -917,7 +917,6 @@ body {
   height: 100%;
   width: calc(var(--spacing) * 72);
   max-width: 85vw;
-  flex-shrink: 0;
   flex-direction: column;
   justify-content: flex-start;
   gap: calc(var(--spacing) * 2);
@@ -955,9 +954,6 @@ body {
   }
   @media (width >= 48rem) {
     position: static;
-  }
-  @media (width >= 48rem) {
-    height: 100%;
   }
   @media (width >= 48rem) {
     width: calc(var(--spacing) * 50);
@@ -1135,6 +1131,9 @@ body {
   color: var(--color-white);
 }
 .table-row {
+  border-collapse: separate;
+  --tw-border-spacing-y: calc(var(--spacing) * 2);
+  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
   border-radius: var(--radius-lg);
   background-color: color-mix(in srgb, #fff 20%, transparent);
   @supports (color: color-mix(in lab, red, red)) {
@@ -1220,10 +1219,9 @@ body {
   z-index: 20;
   margin-top: calc(var(--spacing) * 2);
   width: 100%;
+  border-radius: var(--radius-lg);
   padding-inline: var(--spacing);
   padding-bottom: calc(var(--spacing) * 6);
-  --tw-shadow: 0 20px 40px var(--tw-shadow-color, rgba(0,0,0,0.6));
-  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   @media (width >= 64rem) {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -1561,6 +1559,19 @@ body {
   }
   @media (width >= 96rem) {
     width: calc(var(--spacing) * 12);
+  }
+}
+.shadow-interieur {
+  --tw-shadow: inset 0 0 5px var(--tw-shadow-color, rgba(255,255,255,0.5));
+  box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+}
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 @property --tw-border-spacing-x {

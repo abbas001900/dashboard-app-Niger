@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" class="h-full">
+<html lang="fr" class="h-full no-scrollbar">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -12,20 +12,20 @@
   <!-- Animations de fond (mvm.css ne contient plus que le CSS sans @apply) -->
   <link rel="stylesheet" href="../../mvm.css" />
 </head>
-<body class="h-full overflow-x-hidden">
+<body class="h-full no-scrollbar">
   <!-- Arrière-plans animés -->
   <div class="bg"></div>
   <div class="bg bg2"></div>
   <div class="bg bg3"></div>
 
-  <div class="flex h-full flex-col justify-center gap-3 px-2 py-2 sm:flex-row sm:gap-5 sm:px-3 sm:py-3">
+  <div class="flex h-full flex-col justify-center gap-3 px-2 py-2 sm:flex-row sm:gap-5 sm:px-3 sm:py-3 no-scrollbar">
     <!-- Checkbox caché pour le menu mobile -->
     <input id="menuToggle" type="checkbox" class="peer sr-only" />
     <!-- Overlay mobile -->
     <label for="menuToggle" class="fixed inset-0 z-40 hidden bg-black/50 lg:hidden peer-checked:block"></label>
 
     <!-- Barre latérale -->
-    <aside class="sidebar">
+    <aside class="sidebar shadow-interieur">
       <!-- Bouton fermeture mobile -->
       <label for="menuToggle" class="ml-auto flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white sm:hidden" aria-label="Fermer le menu">
         <i class="bi bi-x icon-size"></i>
@@ -60,7 +60,7 @@
     <!-- Contenu principal -->
     <div class="flex h-full min-w-0 flex-col gap-4 w-full">
       <!-- En-tête -->
-      <header class="flex flex-col gap-3 rounded border-2 border-white/20 bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
+      <header class="flex shadow-interieur flex-col gap-3 rounded bg-white/10 px-3 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4 sm:h-35">
         <div class="flex items-center gap-2">
           <!-- Bouton burger mobile -->
           <label for="menuToggle" class="flex items-center justify-center rounded border border-white/20 bg-white/10 p-2 text-white lg:hidden" aria-label="Ouvrir le menu">
@@ -90,7 +90,7 @@
       </header>
 
       <!-- Zone principale -->
-      <main class="flex flex-col gap-4 h-full overflow-y-scroll rounded border-2 border-white/20 bg-white/20 px-3 py-3 backdrop-blur sm:gap-6 sm:px-4 sm:py-4 lg:gap-6">
+      <main class="flex shadow-interieur flex-col gap-4 h-fit rounded bg-white/20 px-3 py-3 backdrop-blur sm:gap-6 sm:px-4 sm:py-4 lg:gap-6">
         <!-- Filtres et actions -->
         <div class="flex flex-col gap-2">
           <p class="text-white mb-3 mt-1">
@@ -127,7 +127,7 @@
         </div>
 
         <!-- Tableau des utilisateurs -->
-        <div class="w-full overflow-x-auto">
+        <div class="w-full overflow-x-auto no-scrollbar">
           <table class="min-w-full border-separate border-spacing-y-2 text-white">
             <thead>
               <tr class="text-left text-sm uppercase tracking-wide text-gray-200">
